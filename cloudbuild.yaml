@@ -16,3 +16,4 @@ steps:
 serviceAccount: 'projects/$_PROJECT_ID/serviceAccounts/$_SERVICE_ACCOUNT'
 options:
   logging: CLOUD_LOGGING_ONLY
+images: ['gcr.io/$_PROJECT_ID/frontend']
