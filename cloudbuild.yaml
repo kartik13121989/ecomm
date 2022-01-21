@@ -1,0 +1,18 @@
+steps:
+- name: 'node'
+  entrypoint: npm
+  dir: 'frontend'
+  args: ['install']
+- name: node
+  dir: 'frontend'
+  entrypoint: npm
+  args: ['run', 'build']
+# Docker Build
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'asia-south1-docker.pkg.dev/$PROJECT_ID/ecomm/frontend:tag1', '.' ]
+# Docker Push
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push','asia-south1-docker.pkg.dev/$PROJECT_ID/ecomm/frontend:tag1']
+serviceAccount: 'projects/$_PROJECT_ID/serviceAccounts/$_SERVICE_ACCOUNT'
+options:
+  logging: CLOUD_LOGGING_ONLY
